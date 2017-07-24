@@ -1,0 +1,8 @@
+.reg {
+  background-color: yellow;
+  border: 2px solid black;
+  border-radius: 5px;
+  height:2em;
+  width:9em;
+  text-align: center;
+}
