@@ -1,3 +1,11 @@
-<div class="reg">
-  {{reg_num}}
-</div>
+<form class='greetingForm' method="post" action="/reg_numbers">
+  Registration number :<input type="text" name="reg_number" placeholder="Please enter reg number"></input>
+  <input type='submit'name:'submit'></input>
+</form>
+
+<br />
+{{#each reg_numbers}}
+  <div class="reg">
+    {{this}}
+  </div>
+{{/each}}
