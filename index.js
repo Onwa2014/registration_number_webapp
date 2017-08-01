@@ -10,6 +10,11 @@ app.set( 'view engine', 'hbs' );
 
 app.use(express.static('public'));
 
+
+app.get('/', function(req,res){
+   res.redirect('/registration_number')
+ });
+
 // create a route
 app.get('/reg_numbers', function (req, res) {
   // var reg_num = req.body.reg_number;
