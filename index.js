@@ -2,6 +2,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
 
+const port = process.env.PORT || 3001;
+
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -28,11 +30,6 @@ app.post('/reg_numbers', function (req, res) {
 });
 
 //start the server
-var server = app.listen(3001, function () {
-
- var host = server.address().address;
- var port = server.address().port;
-
- console.log('Example app listening at http://%s:%s', host, port);
-
-});
+app.listen(port, function () {
+    console.log('Example app listening on port 3001!')
+})
