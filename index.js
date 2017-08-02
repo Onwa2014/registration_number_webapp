@@ -25,7 +25,7 @@ app.get('/reg_numbers', function (req, res) {
 var reg_numbers =[];
 app.post('/reg_numbers', function (req, res) {
     var reg_num = req.body.reg_number;
-    reg_numbers.push(reg_num)
+    reg_numbers.push(reg_num.toUpperCase())
  res.render('registration_number',{reg_numbers:reg_numbers});
 });
 
