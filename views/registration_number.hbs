@@ -1,19 +1,23 @@
 <form class='greetingForm' method="post" action="/reg_numbers">
   Registration number :<input type="text" name="reg_number" placeholder="Please enter reg number"></input>
   <input type='submit'name:'submit'></input>
+  </form>
   <br />
+  <form class="regForm" method="post" action="/search">
   <div class=radios>
-    <input type="radio" name="town" value="cape_town">Cape Town</input>
-    <input type="radio" name="town" value="bellville">Bellville</input>
-    <input type="radio" name="town" value="malmesbury">Malmesbury</input>
+    <input type="radio" name="town" value="Cape Town">Cape Town</input>
+    <input type="radio" name="town" value="Bellville">Bellville</input>
+    <input type="radio" name="town" value="Paarl">Paarl</input>
+    <input type="radio" name="town" value="all">All</input>
     <br />
-    <input type ="submit"  name="submit">
+    <input type ="submit"  name="search">
   </div>
 </form>
+
 
 <br />
 {{#each reg_numbers}}
   <div class="reg">
-    {{this}}
+    {{this.number}}
   </div>
 {{/each}}
