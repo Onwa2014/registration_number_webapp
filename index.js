@@ -7,9 +7,9 @@ const port = process.env.PORT || 3001;
 const regNums = require('./regNums');
 
 var mongoose = require('mongoose');
-
+const mongoURL = process.env.MONGO_DB_URL || "'mongodb://localhost/registrationNumbers'";
+mongoose.connect(mongoURL);
 var reg = mongoose.model('regnumbers', { number: String, location: String });
-mongoose.connect('mongodb://localhost/registrationNumbers');
 
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,11 +39,25 @@ app.get('/reg_numbers', function (req, res) {
 
 app.post('/reg_numbers', function(req, res){
 
+
+
   // let addReg = function(req, res){
 
     var reg_num = req.body.reg_number;
     var Location = "";
     console.log(reg_num);
+
+    reg.findOne({number: reg_num}, function(err, data){
+
+      if(err){
+        console.log(err);
+      }
+      else {
+        console.log("Registation number exist already");
+        var message = "Registation number exist already";
+        res.redirect('/reg_numbers');
+
+    if(!data){
 
     if(reg_num.startsWith("CY")){
        Location = "Bellville";
@@ -74,7 +88,9 @@ app.post('/reg_numbers', function(req, res){
   // let showRegNumbers = function(req, res){
   //   res.render('/registration_numbers')
   // }
-
+  }
+}
+})
 });
 app.get('/search', function(req, res){
   res.render('registration_number')
